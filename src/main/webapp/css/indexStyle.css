@@ -1,0 +1,38 @@
+body {
+    background-color: lightgray; /* Background color */
+}
+.header {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+.table thead th {
+    background-color: #007bff;
+    color: white;
+}
+.table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+.table tbody tr:hover {
+    background-color: #e9ecef;
+}
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    width: 100%;
+}

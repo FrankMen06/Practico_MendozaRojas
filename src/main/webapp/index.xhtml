@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Bienvenido!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="css/indexStyle.css"></link>
+</h:head>
+<h:body>
+    <div class="container">
+        <div class="header text-center">
+            <h1><b>Lista de Personas</b></h1>
+        </div>
+        <br/>
+
+        <p:dataTable id="personas" var="persona" value="#{personaManaged.listPersonas()}" rowKey="#{persona.id}" styleClass="table table-hover table-responsive">
+            <f:facet name="header">
+                <div class="row col-12">
+                    <div class="col-10">
+                        <h2>Personas Agregadas</h2>
+                    </div>
+                    <div class="col-2 text-right">
+                        <h:link outcome="ingresarPersona" class="btn btn-primary"><i class="fas fa-plus"></i> Ingresar Persona</h:link>
+                    </div>
+                </div>
+            </f:facet>
+
+            <p:column headerText="Id" styleClass="text-center">
+                <h:outputText value="#{persona.id}" />
+            </p:column>
+            <p:column headerText="Identificación" styleClass="text-center">
+                <h:outputText value="#{persona.identificacion}" />
+            </p:column>
+            <p:column headerText="Nombre Completo" styleClass="text-center">
+                <h:outputText value="#{persona.nombres}" />
+            </p:column>
+            <p:column headerText="Dirección" styleClass="text-center">
+                <h:outputText value="#{persona.direccion}" />
+            </p:column>
+            <p:column headerText="Email" styleClass="text-center">
+                <h:outputText value="#{persona.email}" />
+            </p:column>
+            <p:column headerText="Fecha Nacimiento" styleClass="text-center">
+                <h:outputText value="#{persona.fecha_nac}" />
+            </p:column>
+            <p:column headerText="Teléfono" styleClass="text-center">
+                <h:outputText value="#{persona.telefono}" />
+            </p:column>
+            <p:column headerText="Sexo" styleClass="text-center">
+                <h:outputText value="#{persona.sexo}" />
+            </p:column>
+        </p:dataTable>
+
+        <div class="footer">
+            <p>© 2024 Lista de Personas. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</h:body>
+
+</html>
