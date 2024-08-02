@@ -57,6 +57,18 @@
             <p:column headerText="Sexo" styleClass="text-center">
                 <h:outputText value="#{persona.sexo}" />
             </p:column>
+            <p:column headerText="Acciones" styleClass="text-center">
+                <div class="row col-12">
+                    <div class ="col-6">
+                        <h:commandButton value="Editar" action="#{personaManaged.editarPersona(persona.id)}" class="btn btn-primary btn-sm">
+                        </h:commandButton>
+                    </div>
+                   <div class="col-6">
+                       <h:commandButton value="Eliminar" action="#{personaManaged.eliminarPersona(persona.id)}" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de eliminar este registro?');">
+                       </h:commandButton>
+                   </div>
+                </div>
+            </p:column>
         </p:dataTable>
 
         <div class="footer">
