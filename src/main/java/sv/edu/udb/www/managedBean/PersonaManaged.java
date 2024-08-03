@@ -5,6 +5,7 @@ import javax.faces.bean.SessionScoped;
 
 import jakarta.faces.component.UIComponent;
 import jakarta.faces.validator.ValidatorException;
+import jakarta.persistence.EntityManager;
 import sv.edu.udb.www.beans.Persona;
 import sv.edu.udb.www.model.PersonaModel;
 
@@ -16,6 +17,7 @@ import sv.edu.udb.www.beans.Persona;
 import sv.edu.udb.www.model.PersonaModel;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -24,7 +26,7 @@ import java.util.logging.Logger;
 @ManagedBean(name = "personaManaged")
 @SessionScoped
 
-public class PersonaManaged {
+public class PersonaManaged implements Serializable {
     private static final Logger logger = Logger.getLogger(PersonaManaged.class.getName());
     public Persona persona;
     private Persona selectedPersona;
@@ -37,9 +39,7 @@ public class PersonaManaged {
     public PersonaManaged(){
         this.persona = new Persona();
     }
-
-
-    public List<Persona> listPersonas() throws IOException {
+        public List<Persona> listPersonas() throws IOException {
         return personaModel.listPersonas();
     }
 
@@ -63,12 +63,26 @@ public class PersonaManaged {
     }
 
     public String guardarCambios() {
-//        personaModel.insert(persona);
+        personaModel.insert(persona);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Exito!", "Se ha registró la Persona");
         FacesContext.getCurrentInstance().addMessage(null, msg);
 
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "index?faces-redirect=true";
+    }
+
+        //Creamos metodo para eliminar personas
+    public void eliminarPersona() {
+        try {
+            personaModel.delete(persona);
+            // agregamos un mensaje para confirmar la eliminación
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminado", "Persona eliminada exitosamente"));
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "No se pudo eliminar la persona"));
+            e.printStackTrace();
+        }
     }
 
 

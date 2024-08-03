@@ -102,4 +102,46 @@ public class PersonaModel {
             Conexion.close(conn);
         }
     }
+
+    //Creamos metodo para ingresar personas
+    public void insert(Persona persona) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = Conexion.getConnection();
+            String SQL_INSERT = "INSERT INTO personas (Identificacion, Nombre, Direccion, Email, FechaNacimiento, Telefono, Sexo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            stmt = conn.prepareStatement(SQL_INSERT);
+            stmt.setString(1, persona.getIdentificacion());
+            stmt.setString(2, persona.getNombres());
+            stmt.setString(3, persona.getDireccion());
+            stmt.setString(4, persona.getEmail());
+            stmt.setDate(5, new Date(persona.getFecha_nac().getTime()));
+            stmt.setString(6, persona.getTelefono());
+            stmt.setString(7, persona.getSexo());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+    }
+    //creamos el metodo para eliminar personas
+
+    public void delete(Persona persona) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = Conexion.getConnection();
+            String SQL_DELETE = "DELETE FROM personas WHERE Identificacion = ?";
+            stmt = conn.prepareStatement(SQL_DELETE);
+            stmt.setString(1, persona.getIdentificacion());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+    }
 }

@@ -70,8 +70,9 @@
                         </h:form>
                     </div>
                    <div class="col-6">
-                       <h:commandButton value="Eliminar" action="#{personaManaged.eliminarPersona(persona.id)}" styleClass="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar este registro?');">
-                       </h:commandButton>
+                       <h:form>
+                       <h:commandButton value="Eliminar" type="submit" action="#{personaManaged.eliminarPersona}" class="btn btn-danger"/>
+                       </h:form>
                    </div>
                 </div>
             </p:column>
