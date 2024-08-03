@@ -20,6 +20,10 @@
             <h1><b>Lista de Personas</b></h1>
         </div>
         <br/>
+        <p:messages id="messages" showDetail="true" closable="true">
+            <p:autoUpdate/>
+        </p:messages>
+        <br/>
 
         <p:dataTable id="personas" var="persona" value="#{personaManaged.listPersonas()}" rowKey="#{persona.id}" styleClass="table table-hover table-responsive">
             <f:facet name="header">
@@ -60,11 +64,13 @@
             <p:column headerText="Acciones" styleClass="text-center">
                 <div class="row col-12">
                     <div class ="col-6">
-                        <h:commandButton value="Editar" action="#{personaManaged.editarPersona(persona.id)}" class="btn btn-primary btn-sm">
-                        </h:commandButton>
+                        <h:form>
+                            <h:commandButton value="Editar" action="#{personaManaged.editarPersona(persona, 'modificarPersona')}" styleClass="btn btn-primary" >
+                            </h:commandButton>
+                        </h:form>
                     </div>
                    <div class="col-6">
-                       <h:commandButton value="Eliminar" action="#{personaManaged.eliminarPersona(persona.id)}" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de eliminar este registro?');">
+                       <h:commandButton value="Eliminar" action="#{personaManaged.eliminarPersona(persona.id)}" styleClass="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar este registro?');">
                        </h:commandButton>
                    </div>
                 </div>

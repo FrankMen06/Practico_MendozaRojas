@@ -16,5 +16,10 @@
             <to-view-id>/ingresarPersona.xhtml</to-view-id>
             <redirect />
         </navigation-case>
+        <navigation-case>
+            <from-outcome>modificarPersona</from-outcome>
+            <to-view-id>/modificarPersona.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
     </navigation-rule>
 </faces-config>
