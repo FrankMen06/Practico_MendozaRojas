@@ -9,7 +9,9 @@ import java.util.List;
 public class PersonaModel {
     private final String SQL_SELECT = "SELECT * FROM personas";
     private final String SQL_SELECT_PERSON = "SELECT * FROM personas WHERE id = ?";
+    private final String SQL_INSERT_PERSON = "INSERT INTO personas (Identificacion, Nombre, Direccion, Email, FechaNacimiento, Telefono, Sexo) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private final String SQL_UPDATE_PERSON = "UPDATE personas SET Identificacion = ?, Nombre = ?, Direccion = ?, Email = ?, FechaNacimiento = ?, Telefono = ?, Sexo = ? WHERE Id = ?";
+    private final String SQL_DELETE_PERSON = "DELETE FROM personas WHERE Identificacion = ?";
 
     // Listar Todas las personas
     public List<Persona> listPersonas(){
@@ -109,8 +111,7 @@ public class PersonaModel {
         PreparedStatement stmt = null;
         try {
             conn = Conexion.getConnection();
-            String SQL_INSERT = "INSERT INTO personas (Identificacion, Nombre, Direccion, Email, FechaNacimiento, Telefono, Sexo) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            stmt = conn.prepareStatement(SQL_INSERT);
+            stmt = conn.prepareStatement(SQL_INSERT_PERSON);
             stmt.setString(1, persona.getIdentificacion());
             stmt.setString(2, persona.getNombres());
             stmt.setString(3, persona.getDireccion());
@@ -133,8 +134,7 @@ public class PersonaModel {
         PreparedStatement stmt = null;
         try {
             conn = Conexion.getConnection();
-            String SQL_DELETE = "DELETE FROM personas WHERE Identificacion = ?";
-            stmt = conn.prepareStatement(SQL_DELETE);
+            stmt = conn.prepareStatement(SQL_DELETE_PERSON);
             stmt.setString(1, persona.getIdentificacion());
             stmt.executeUpdate();
         } catch (SQLException e) {

@@ -85,6 +85,9 @@ public class PersonaManaged implements Serializable {
         }
     }
 
+    public String retorna(){
+        return "index";
+    }
 
     private boolean validarFecha(){
         FacesContext context = FacesContext.getCurrentInstance();

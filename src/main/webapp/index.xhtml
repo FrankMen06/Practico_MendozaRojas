@@ -62,17 +62,21 @@
                 <h:outputText value="#{persona.sexo}" />
             </p:column>
             <p:column headerText="Acciones" styleClass="text-center">
-                <div class="row col-12">
+                <div class="col-12">
                     <div class ="col-6">
                         <h:form>
                             <h:commandButton value="Editar" action="#{personaManaged.editarPersona(persona, 'modificarPersona')}" styleClass="btn btn-primary" >
                             </h:commandButton>
                         </h:form>
                     </div>
-                   <div class="col-6">
+                   <div class="mt-3 col-6">
                        <h:form>
-                       <h:commandButton value="Eliminar" type="submit" action="#{personaManaged.eliminarPersona}" class="btn btn-danger"/>
+                           <h:commandButton value="Eliminar"
+                                            action="#{personaManaged.eliminarPersona}"
+                                            class="btn btn-danger"
+                                            onclick="return confirm('¿Está seguro de que desea eliminar esta persona?');"/>
                        </h:form>
+
                    </div>
                 </div>
             </p:column>
