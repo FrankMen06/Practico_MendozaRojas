@@ -2,8 +2,8 @@ Hola!
 
 Está es un poco de información extra que puede servir para levantar el proyecto...
 
-Ocupamos jdk 19 y server WildFly... adjuntamos los rar dentro del proyecto para que pueda moverlos y levantar el proyecto sin problema, se ha adjuntado ya que 
-como se sabe se ha tenido problemas con muchos servers y jdk... entonces adjuntamos los que nos han funcionado a nosotros esperando sean de gran utilidad 
+1.   wildfly-21.0.0.Final
+2.   Jdk 19.0.2
 
 si el proyecto dice que no se despliega hay que configurar el artifac en "war exploded" 
 ![image](https://github.com/user-attachments/assets/81fd1d6f-511f-4564-8dfa-7263d84a5d54)
